@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Company Scraper</h2>
+    <p>Total companies in database: {{ company_count }}</p>
+    
+    <form action="{{ url_for('scrape') }}" method="POST">
+        <button type="submit" class="btn">Scrape Companies Now</button>
+    </form>
+    
+    <div class="actions">
+        <a href="{{ url_for('companies') }}" class="btn">View All Companies</a>
+        <a href="{{ url_for('download') }}" class="btn">Download PDF</a>
+    </div>
+{% endblock %}

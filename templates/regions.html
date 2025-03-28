@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Regions</h2>
+    <p><a href="{{ url_for('index') }}" class="btn">Back to Home</a></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Region Name</th>
+                <th>URL</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for region in regions %}
+            <tr>
+                <td>{{ region['id'] }}</td>
+                <td>{{ region['name'] }}</td>
+                <td><a href="{{ region['url'] }}" target="_blank">{{ region['url'] }}</a></td>
+                <td>
+                    <a href="{{ url_for('scrape_companies', region_id=region['id']) }}" class="btn">Scrape Companies</a>
+                    <a href="{{ url_for('show_companies', region_id=region['id']) }}" class="btn">View Companies</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
